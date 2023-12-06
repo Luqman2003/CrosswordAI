@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -32,6 +32,15 @@ public class UserController {
             default:
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unexpected error");
         }
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        boolean created = userService.addUser(user.getUsername(), user.getPassword());
+        if (created) {
+            return ResponseEntity.ok("Successful creation!");
+        }
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("Creation failed. Username exists already or an error occurred");
     }
 
 }
