@@ -18,9 +18,8 @@ public class DBConn {
         String adminName = configProps.getProperty("crossword.username");
         String password = configProps.getProperty("crossword.password");
 
-        String connectionUrl =
-                String.format("jdbc:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s",
-                        serverURL, dbName, adminName, password);
+        String connectionUrl = String.format("jdbc:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s",
+                serverURL, dbName, adminName, password);
         Connection conn = DriverManager.getConnection(connectionUrl);
 
         conn.setAutoCommit(true);
@@ -29,7 +28,7 @@ public class DBConn {
         return conn;
     }
 
-    public static void main (String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException {
         Connection conn = openConnection();
         QueryAbstract q = new Query();
         q.clearTables();
