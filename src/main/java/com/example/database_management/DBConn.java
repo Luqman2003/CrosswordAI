@@ -1,26 +1,19 @@
 package com.example.database_management;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class DBConn {
 
-    public static Connection openConnection() throws SQLException, IOException {
-        Properties configProps = new Properties();
-        configProps.load(new FileInputStream("dbconn.properties"));
+    public static Connection openConnection() throws SQLException {
+        String databaseUrl = System.getenv("JDBC_DATABASE_URL");
+        if (databaseUrl == null || databaseUrl.isEmpty()) {
+            throw new SQLException("Database URL not set in environment variables");
+        }
 
-        String serverURL = configProps.getProperty("crossword.server_url");
-        String dbName = configProps.getProperty("crossword.database_name");
-        String adminName = configProps.getProperty("crossword.username");
-        String password = configProps.getProperty("crossword.password");
-
-        String connectionUrl = String.format("jdbc:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s",
-                serverURL, dbName, adminName, password);
-        Connection conn = DriverManager.getConnection(connectionUrl);
+        Connection conn = DriverManager.getConnection(databaseUrl);
 
         conn.setAutoCommit(true);
         conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
