@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/create")
+    @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@RequestBody User user) {
         boolean created = userService.addUser(user.getUsername(), user.getPassword());
         if (created) {
@@ -42,5 +42,4 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("Creation failed. Username exists already or an error occurred");
     }
-
 }
