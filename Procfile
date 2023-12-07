@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/CrosswordAI.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/CrosswordAI.jar
