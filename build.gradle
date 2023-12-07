@@ -22,6 +22,7 @@ dependencies {
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     // Spring Boot Starter JDBC
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.postgresql:postgresql:42.2.5'
 }
 
 tasks.named('test') {
