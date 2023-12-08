@@ -19,7 +19,8 @@ public class CrosswordController {
     }
 
     @PostMapping("/createCrossword")
-    public ResponseEntity<String> createCrossword(@RequestParam String topic) {
-        return null;
+    public char[][] createCrossword(@RequestParam String topic) {
+        char[][] crossword = crosswordService.createCrossword();
+        return crossword;
     }
 }
