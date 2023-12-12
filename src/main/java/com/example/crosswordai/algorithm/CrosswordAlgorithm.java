@@ -19,7 +19,6 @@ public class CrosswordAlgorithm {
    * @return - a 2d char matrix which will represent our crossword
    */
   public char[][] generate() {
-    // TODO: implement this
     String word = words.get(0);
 
     // place the first word in the list inside the 2d array ACROSS
@@ -37,9 +36,28 @@ public class CrosswordAlgorithm {
       for (int i = 0; i < crossword.length; i++) {
         for (int j = 0; j < crossword[i].length; i++) {
 
+          // iterate through the current word and check if there
+          // exists a character in the word that exists in the crossword
           for (int k = 0; k < currWord.length(); k++) {
+
+            // checking for the same character
             if (currWord.charAt(k) == crossword[i][j]) {
 
+              // now, we check if we can place that word in the horizontal direction
+              if (canPlace(currWord, crossword, i, j, 0)) {
+
+                // actually place the word in the crossword
+                crossword = place(currWord, crossword, i, j, 0);
+
+                // same check but for vertical direction
+              } else if (canPlace(currWord, crossword, i, j, 1)) {
+
+                // placing the word in the crossword
+                crossword = place(currWord, crossword, i, j, 1);
+              } else {
+                // we can't place the word on this current iteration
+                // figure out what we do in this situation
+              }
             }
           }
 
@@ -47,7 +65,7 @@ public class CrosswordAlgorithm {
       }
     }
 
-    return null;
+    return crossword;
   }
 
   /**
@@ -59,13 +77,71 @@ public class CrosswordAlgorithm {
    * @return - returns true if we can place the word in the crossword and false
    *         otherwise
    */
-  public boolean canPlace(String word, char[][] crossword, int row, int col) {
-    // TODO: implement this
-    return false;
+  public boolean canPlace(String word, char[][] crossword, int row, int col, int direction) {
+    // first thing to do is get the index of the character that exists in the word
+    char c = crossword[row][col];
+    int index = -1;
+    for (int i = 0; i < word.length(); i++) {
+      if (word.charAt(i) == c) {
+        index = i;
+      }
+    }
+
+    switch (direction) {
+      // horizontal case
+      case 0:
+        // this means we would have to expand the matrix
+        if (col - (index + 1) < 0) {
+
+          // check if any of the chars leading up to the col index is nonzero
+          for (int i = 0; i < col; i++) {
+            if (crossword[row][i] != 0) {
+              return false;
+            }
+          }
+          // no expansion
+        } else {
+          int starting = word.length() - (index - 2);
+
+          // check if any of the chars starting from 1 before where the word
+          // would be placed is nonzero
+          for (int i = starting; i < col; i++) {
+            if (crossword[row][i] != 0) {
+              return false;
+            }
+          }
+        }
+
+        // now that i've done the check for left side, we do for right side
+        // if (col + )
+
+        break;
+
+      // vertical case
+      case 1:
+
+        break;
+      default:
+
+        break;
+    }
+    return true;
   }
 
-  public void place(String word, char[][] crossword, int row, int col, String direction) {
+  public char[][] place(String word, char[][] crossword, int row, int col, int direction) {
     // TODO: implement this
+    return null;
+  }
+
+  /**
+   *
+   * @param crossword
+   * @param direction
+   * @param scale
+   * @return
+   */
+  private char[][] expandCrossword(char[][] crossword, int direction, int scale) {
+    return null;
   }
 
 }
