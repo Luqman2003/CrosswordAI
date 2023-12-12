@@ -23,6 +23,8 @@ dependencies {
     // Spring Boot Starter JDBC
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.postgresql:postgresql:42.2.5'
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
 tasks.named('test') {
