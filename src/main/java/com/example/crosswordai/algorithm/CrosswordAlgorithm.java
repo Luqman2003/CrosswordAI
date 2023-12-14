@@ -1,6 +1,5 @@
 package com.example.crosswordai.algorithm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CrosswordAlgorithm {
