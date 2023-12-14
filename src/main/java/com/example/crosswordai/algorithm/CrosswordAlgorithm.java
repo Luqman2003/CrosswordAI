@@ -37,7 +37,7 @@ public class CrosswordAlgorithm {
         for (int j = 0; j < crossword[i].length; i++) {
 
           // iterate through the current word and check if there
-          // exists a character in the word that exists in the crossword
+          // exists a character in the word that also exists in the crossword
           for (int k = 0; k < currWord.length(); k++) {
 
             // checking for the same character
@@ -63,6 +63,8 @@ public class CrosswordAlgorithm {
 
         }
       }
+      words.remove(currWord);
+      count++;
     }
 
     return crossword;
@@ -93,10 +95,39 @@ public class CrosswordAlgorithm {
         // this means we would have to expand the matrix
         if (col - (index + 1) < 0) {
 
-          // check if any of the chars leading up to the col index is nonzero
-          for (int i = 0; i < col; i++) {
-            if (crossword[row][i] != 0) {
-              return false;
+          if (row != 0) {
+            if (row < crossword.length) {
+              for (int i = row - 1; i < row + 1; i++) {
+                for (int j = 0; j < col; j++) {
+                  if (crossword[i][j] != 0) {
+                    return false;
+                  }
+                }
+              }
+            } else {
+              for (int i = row - 1; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                  if (crossword[i][j] != 0) {
+                    return false;
+                  }
+                }
+              }
+            }
+          } else {
+            if (crossword.length == 1) {
+              for (int i = 0; i < col; i++) {
+                if (crossword[row][i] != 0) {
+                  return false;
+                }
+              }
+            } else {
+              for (int i = row; i < row + 1; i++) {
+                for (int j = 0; j < col; j++) {
+                  if (crossword[i][j] != 0) {
+                    return false;
+                  }
+                }
+              }
             }
           }
           // no expansion
@@ -112,8 +143,20 @@ public class CrosswordAlgorithm {
           }
         }
 
-        // now that i've done the check for left side, we do for right side
-        // if (col + )
+        // now that we've checked for left side, we do for right side
+        int numAfterIndex = word.length() - (index + 1);
+        if (row != 0) {
+
+        } else {
+          int tempRow = row;
+          int tempCol = col;
+          while (tempCol < crossword[row].length) {
+            while (tempRow < crossword.length) {
+
+            }
+            tempCol++;
+          }
+        }
 
         break;
 
@@ -128,6 +171,15 @@ public class CrosswordAlgorithm {
     return true;
   }
 
+  /**
+   *
+   * @param word
+   * @param crossword
+   * @param row
+   * @param col
+   * @param direction
+   * @return
+   */
   public char[][] place(String word, char[][] crossword, int row, int col, int direction) {
     // TODO: implement this
     return null;

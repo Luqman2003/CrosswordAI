@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\main\\java\\com",
+    "\\src\\main\\java\\com\\example",
+    "\\src\\main\\java\\com\\example\\crosswordai",
+    "\\src\\main\\java\\com\\example\\crosswordai\\algorithm",
+    "\\src\\test\\java",
+    "\\src\\test\\java\\com",
+    "\\src\\test\\java\\com\\example",
+    "\\src\\test\\java\\com\\example\\crosswordai"
+  ],
+  "SelectedNode": "\\src\\main\\java\\com\\example\\crosswordai\\algorithm\\CrosswordAlgorithm.java",
+  "PreviewInSolutionExplorer": false
+}
