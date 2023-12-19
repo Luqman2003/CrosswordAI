@@ -33,7 +33,7 @@ public class CrosswordAlgorithm {
       String currWord = words.get(count);
 
       for (int i = 0; i < crossword.length; i++) {
-        for (int j = 0; j < crossword[i].length; i++) {
+        for (int j = 0; j < crossword[i].length; j++) {
 
           // iterate through the current word and check if there
           // exists a character in the word that also exists in the crossword
@@ -80,93 +80,6 @@ public class CrosswordAlgorithm {
    */
   public boolean canPlace(String word, char[][] crossword, int row, int col, int direction) {
     // first thing to do is get the index of the character that exists in the word
-    char c = crossword[row][col];
-    int index = -1;
-    for (int i = 0; i < word.length(); i++) {
-      if (word.charAt(i) == c) {
-        index = i;
-      }
-    }
-
-    switch (direction) {
-      // horizontal case
-      case 0:
-        // this means we would have to expand the matrix
-        if (col - (index + 1) < 0) {
-
-          if (row != 0) {
-            if (row < crossword.length) {
-              for (int i = row - 1; i < row + 1; i++) {
-                for (int j = 0; j < col; j++) {
-                  if (crossword[i][j] != 0) {
-                    return false;
-                  }
-                }
-              }
-            } else {
-              for (int i = row - 1; i < row; i++) {
-                for (int j = 0; j < col; j++) {
-                  if (crossword[i][j] != 0) {
-                    return false;
-                  }
-                }
-              }
-            }
-          } else {
-            if (crossword.length == 1) {
-              for (int i = 0; i < col; i++) {
-                if (crossword[row][i] != 0) {
-                  return false;
-                }
-              }
-            } else {
-              for (int i = row; i < row + 1; i++) {
-                for (int j = 0; j < col; j++) {
-                  if (crossword[i][j] != 0) {
-                    return false;
-                  }
-                }
-              }
-            }
-          }
-          // no expansion
-        } else {
-          int starting = word.length() - (index - 2);
-
-          // check if any of the chars starting from 1 before where the word
-          // would be placed is nonzero
-          for (int i = starting; i < col; i++) {
-            if (crossword[row][i] != 0) {
-              return false;
-            }
-          }
-        }
-
-        // now that we've checked for left side, we do for right side
-        int numAfterIndex = word.length() - (index + 1);
-        if (row != 0) {
-
-        } else {
-          int tempRow = row;
-          int tempCol = col;
-          while (tempCol < crossword[row].length) {
-            while (tempRow < crossword.length) {
-
-            }
-            tempCol++;
-          }
-        }
-
-        break;
-
-      // vertical case
-      case 1:
-
-        break;
-      default:
-
-        break;
-    }
     return true;
   }
 
