@@ -22,7 +22,7 @@ public class CrosswordGenerationTests {
     words.add("engineering");
 
     CrosswordAlgorithm alg = new CrosswordAlgorithm(words);
-    char[][] crossword = alg.generate();
+    // char[][] crossword = alg.generate();
     // assertEquals()
   }
 }
