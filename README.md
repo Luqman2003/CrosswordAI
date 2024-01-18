@@ -27,17 +27,15 @@ This project is currently under active development. More features and optimizati
 
 (Upon completion, detailed instructions on how to use CrosswordAI, along with potential screenshots or GIFs, will be available here.)
 
-## Contributing
-
-(If you are open to contributions, include guidelines here on how others can contribute to the project.)
-
 ## License
 
 (Your choice of license for the project.)
 
 ## Contact
 
-(Your contact information for queries or collaborations related to this project.)
+Luqman Shibly - luqmanshibly05@gmail.com
+Hakeem Shibly - hakeemshibly99@gmail.com
+Octavio Badillo - octaviobadillo2@gmail.com
 
 ---
 
